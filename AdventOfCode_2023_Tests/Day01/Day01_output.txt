@@ -1,0 +1,15 @@
+============Output at 2023-12-01 11:38:32============
+The sum of all calibration values inside the provided document is 56042
+============End of output============
+============Output at 2023-12-01 12:03:40============
+The sum of all calibration values inside the provided document is 54766
+============End of output============
+============Output at 2023-12-01 12:12:27============
+P1: The sum of all calibration values inside the provided document is 56042
+============End of output============
+============Output at 2023-12-01 12:12:27============
+P2: The sum of all calibration values inside the provided document is 54766
+============End of output============
+============Output at 2023-12-01 14:20:18============
+P2: The sum of all calibration values inside the provided document is 55358
+============End of output============
