@@ -1,0 +1,6 @@
+============Output at 2023-12-05 14:34:20============
+P1: The sum of all possible games is 2545
+============End of output============
+============Output at 2023-12-05 14:55:23============
+P2: The sum of all possible games is 78111
+============End of output============

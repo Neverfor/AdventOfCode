@@ -18,7 +18,8 @@ namespace AdventOfCode_2023_Tests
                 sw.WriteLine("============End of output============");
             }
         }
-
+        
+        #region Day 1
         public static string RemoveCharactersFromString(string inputString)
         {
             Regex rgx = new Regex("[^0-9.]");
@@ -95,5 +96,80 @@ namespace AdventOfCode_2023_Tests
         {
             return GetFirstAndLastNumberFromString(RemoveCharactersFromString(ConvertSpelledNumbersToNumbersWithoutRemovingText(inputString)));
         }
+
+        #endregion
+
+        #region Day2
+        public static List<string> GetASingleWordBeforeEachSearchInput(string inputString, string searchInput, bool includingSearchString = false)
+        {
+            var foundWords = new List<string>();
+            Regex regex = new Regex($"(?:^|\\w+\\s+){searchInput}");
+
+            foreach (Match match in regex.Matches(inputString))
+            {
+                foundWords.Add(includingSearchString ? match.Value.Replace(" ", "") : match.Value.Replace(searchInput, "").Replace(" ", ""));
+            }
+
+            return foundWords;
+        }
+
+        public static int MaxAmountOfBlueCubes = 14;
+        public static int MaxAmountOfGreenCubes = 13;
+        public static int MaxAmountOfRedCubes = 12;
+
+        public static bool IsGamePossible(string inputString)
+        {
+            var listOfBlues = GetASingleWordBeforeEachSearchInput(inputString, "blue");
+            var anyAmountOfBlueCubesLargerThanMaximum = listOfBlues.Where(x => int.Parse(x) > MaxAmountOfBlueCubes);
+
+            var listOfGreens = GetASingleWordBeforeEachSearchInput(inputString, "green");
+            var anyAmountOfRedCubesLargerThanMaximum = listOfGreens.Where(x => int.Parse(x) > MaxAmountOfRedCubes);
+
+            var listOfReds = GetASingleWordBeforeEachSearchInput(inputString, "red");
+            var anyAmountOfGreenCubesLargerThanMaximum = listOfReds.Where(x => int.Parse(x) > MaxAmountOfGreenCubes);
+
+
+            if (anyAmountOfBlueCubesLargerThanMaximum.Any() ||
+                anyAmountOfRedCubesLargerThanMaximum.Any() ||
+                anyAmountOfGreenCubesLargerThanMaximum.Any())
+                return false;
+            else 
+                return true;
+        }
+
+        public static int GetGameId(string inputString)
+        {
+            var foundWords = new List<string>();
+            Regex regex = new Regex($"(?<=\\bGame\\s)(\\w+)");
+
+            var match = regex.Matches(inputString).FirstOrDefault();
+            return int.Parse(match.Value);
+        }
+
+        public static int GetIdIfGameIsPossible (string inputString)
+        {
+            if(IsGamePossible(inputString))
+            {
+                return GetGameId(inputString);
+            }
+            return 0;
+        }
+
+        public static int GetMinimumAmountOfCubesPerColor(string inputString, string cubesColor)
+        {
+            var listOfBlues = GetASingleWordBeforeEachSearchInput(inputString, cubesColor);
+            var anyAmountOfBlueCubesLargerThanMaximum = listOfBlues.Any() ? listOfBlues.Max(x => int.Parse(x)) : 0;
+
+            //we want a power of all possible cubes, hence return 1 in place of 0, so that the multiplication will work and the result won't be affected
+            return anyAmountOfBlueCubesLargerThanMaximum == 0 ? 1 : anyAmountOfBlueCubesLargerThanMaximum;
+        }
+
+        public static int GetPowerOfMinimumRequiredAmountOfCubesInAGame(string inputString)
+        {
+            return GetMinimumAmountOfCubesPerColor(inputString, "blue") * GetMinimumAmountOfCubesPerColor(inputString, "red") * GetMinimumAmountOfCubesPerColor(inputString, "green");
+        }
+
+        #endregion
+
     }
 }
