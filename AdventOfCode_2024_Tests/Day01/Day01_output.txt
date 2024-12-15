@@ -1,3 +1,6 @@
 ============Output at 2024-12-15 15:35:36============
 Day01 Part1: The sum of all distances inside the provided document is 936063
 ============End of output============
+============Output at 2024-12-15 21:47:47============
+Day01 Part2: The sum of all similar distances inside the provided document is 23150395
+============End of output============

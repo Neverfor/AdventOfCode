@@ -62,6 +62,33 @@ namespace AdventOfCode_2024_Tests.Day01
         [TestMethod]
         public void Puzzle_2()
         {
+            var inputLines = File.ReadAllLines(InputFilePath);
+
+            var leftNumbersList = new List<int>();
+            var rightNumbersList = new List<int>();
+
+            var listWithSimilarDistances = new List<int>();
+
+            foreach (var line in inputLines)
+            {
+                var numbers = Logic.ConvertRowToNumbers(line);
+                leftNumbersList.Add(numbers[0]);
+                rightNumbersList.Add(numbers[1]);
+            }
+
+            leftNumbersList = leftNumbersList.OrderBy(x => x).ToList();
+            rightNumbersList = rightNumbersList.OrderBy(x => x).ToList();
+
+            foreach (var nr in leftNumbersList)
+            {
+                listWithSimilarDistances.Add(Logic.MeasureSimilarity(nr, rightNumbersList));
+            }
+
+            var sumOfAllNumbers = listWithSimilarDistances.Sum();
+
+            var outputText = $"Day01 Part2: The sum of all similar distances inside the provided document is {sumOfAllNumbers}";
+            Debug.WriteLine(outputText);
+            Shared.SendOutputToFile(OutputFilePath, outputText);
         }
 
     }

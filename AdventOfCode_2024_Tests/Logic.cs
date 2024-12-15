@@ -21,6 +21,12 @@ namespace AdventOfCode_2024_Tests
             return inputString.Split("   ").Select(int.Parse).ToArray();
         }
 
+        public static int MeasureSimilarity(this int number, List<int> listToAnalyse)
+        {
+            var sameNumbers = listToAnalyse.Where(x => x == number).ToArray();
+            return sameNumbers.Any() ? number * sameNumbers.Count() : 0;
+        }
+
         #endregion
 
         #region Day02
