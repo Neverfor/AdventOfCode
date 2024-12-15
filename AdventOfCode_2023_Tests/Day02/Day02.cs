@@ -28,7 +28,7 @@ namespace AdventOfCode_2023_Tests.Day02
 
             foreach (var line in inputLines)
             {
-                modifiedLines.Add(Shared.GetIdIfGameIsPossible(line));
+                modifiedLines.Add(Logic.GetIdIfGameIsPossible(line));
             }
 
             var sumOfTheIdsOfAllPossibleGames = modifiedLines.Sum();
@@ -46,7 +46,7 @@ namespace AdventOfCode_2023_Tests.Day02
 
             foreach (var line in inputLines)
             {
-                modifiedLines.Add(Shared.GetPowerOfMinimumRequiredAmountOfCubesInAGame(line));
+                modifiedLines.Add(Logic.GetPowerOfMinimumRequiredAmountOfCubesInAGame(line));
             }
 
             var sumOfTheIdsOfAllPossibleGames = modifiedLines.Sum();

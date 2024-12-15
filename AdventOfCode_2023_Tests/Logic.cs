@@ -1,23 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
+
 
 namespace AdventOfCode_2023_Tests
 {
-    public static class Shared
+    public static partial class Logic
     {
-        public static void SendOutputToFile(string path, string outputText)
-        {
-            using (StreamWriter sw = File.AppendText(path))
-            {
-                sw.WriteLine($"============Output at {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}============");
-                sw.WriteLine(outputText);
-                sw.WriteLine("============End of output============");
-            }
-        }
         
         #region Day 1
         public static string RemoveCharactersFromString(string inputString)

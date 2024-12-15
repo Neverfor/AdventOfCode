@@ -28,7 +28,7 @@ namespace AdventOfCode_2023_Tests.Day01
 
             foreach (var line in inputLines)
             {
-                modifiedLines.Add(Shared.GetFirstAndLastNumber(line));
+                modifiedLines.Add(Logic.GetFirstAndLastNumber(line));
             }
 
             var sumOfAllNumbers = modifiedLines.Sum();
@@ -48,7 +48,7 @@ namespace AdventOfCode_2023_Tests.Day01
             foreach (var line in inputLines)
             {
                 counter++;
-                modifiedLines.Add(Shared.GetFirstAndLastNumberWithSpelledNumbers(line));
+                modifiedLines.Add(Logic.GetFirstAndLastNumberWithSpelledNumbers(line));
             }
 
             var sumOfAllNumbers = modifiedLines.Sum();

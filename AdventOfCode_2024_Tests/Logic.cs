@@ -1,0 +1,39 @@
+﻿using System.Numerics;
+using System.Text.RegularExpressions;
+
+namespace AdventOfCode_2024_Tests
+{
+    public static class Logic
+    {
+        #region Day01
+        public static int ToPositive(this int number)
+        {
+            return number >= 0 ? number : -1 * number;
+        }
+
+        public static int MeasureDistance(int number1, int number2)
+        {
+            return (number1 - number2).ToPositive();
+        }
+
+        public static int[] ConvertRowToNumbers (this string inputString)
+        {
+            return inputString.Split("   ").Select(int.Parse).ToArray();
+        }
+
+        #endregion
+
+        #region Day02
+        #endregion
+
+        #region Day03
+        #endregion
+
+        #region Day04
+        #endregion
+
+        #region Day05
+        #endregion
+    }
+}
+        
